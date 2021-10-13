@@ -6,8 +6,7 @@
 
 require('dotenv').config();
 
-const serverID = process.env.SERVERID;
-const channelID = process.env.CHANNELID;
+const fetch = require('node-fetch');
 
 console.log('Beep beep! 🤖');
 
@@ -24,18 +23,38 @@ client.login(process.env.TOKEN);
 client.once('ready', readyDiscord);
 
 function readyDiscord() {
+  // require('./deploy-commands');
   console.log('💖');
 }
 
 const replies = ['🚂🌈💖', 'Choo choo!', 'Ding! 🛎', 'Never forget this dot!'];
 
-// client.on('message', gotMessage);
+client.on('interactionCreate', async (interaction) => {
+  if (!interaction.isCommand()) return;
 
-// function gotMessage(msg) {
-//   if (msg.guild.id === serverID && msg.channel.id === channelID) {
-//     if (msg.content === '!choochoo') {
-//       const index = Math.floor(Math.random() * replies.length);
-//       msg.channel.send(replies[index]);
-//     }
-//   }
-// }
+  const { commandName, options } = interaction;
+
+  if (commandName === 'choochoo') {
+    const index = Math.floor(Math.random() * replies.length);
+    await interaction.reply({
+      content: replies[index],
+      ephemeral: true,
+    });
+  } else if (commandName === 'gif') {
+    let keywords = options.getString('keywords') || 'coding train';
+
+    // Avoiding the 3 second issue?
+    await interaction.deferReply();
+    let url = `https://api.tenor.com/v1/search?q=${keywords}&key=${process.env.TENORKEY}&contentfilter=high`;
+    let response = await fetch(url);
+    let json = await response.json();
+    const index = Math.floor(Math.random() * json.results.length);
+
+    await interaction.editReply({
+      content: `GIF from Tenor: ${keywords}\n${json.results[index].url}`,
+    });
+
+    // NOTE TO SELF: look at embeds
+    // https://discordjs.guide/popular-topics/embeds.html#embed-preview
+  }
+});
