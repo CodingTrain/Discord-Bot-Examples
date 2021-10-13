@@ -38,7 +38,7 @@ client.on('interactionCreate', async (interaction) => {
     const index = Math.floor(Math.random() * replies.length);
     await interaction.reply({
       content: replies[index],
-      ephemeral: true,
+      // ephemeral: true,
     });
   } else if (commandName === 'gif') {
     let keywords = options.getString('keywords') || 'coding train';
