@@ -32,7 +32,8 @@ const replies = ['🚂🌈💖', 'Choo choo!', 'Ding! 🛎', 'Never forget this 
 client.on('interactionCreate', async (interaction) => {
   if (!interaction.isCommand()) return;
 
-  const { commandName, options } = interaction;
+  const { commandName, user, options } = interaction;
+  console.log(commandName, user.username);
 
   if (commandName === 'choochoo') {
     const index = Math.floor(Math.random() * replies.length);
