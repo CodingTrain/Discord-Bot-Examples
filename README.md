@@ -1,6 +1,8 @@
 # Discord-Bots-F21
 
-## Steps to create new bot 
+## Steps to create you bot!
+
+The following is based on the [discord.js guide](https://discordjs.guide/#before-you-begin).
 
 1. Create node project and install discord.js module as well as dotenv.
 
