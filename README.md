@@ -1,4 +1,4 @@
-# Discord-Bots-F21
+# Discord Bot Examples
 
 ## Steps to create you bot!
 
