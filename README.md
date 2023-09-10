@@ -1,6 +1,6 @@
 # Discord Bot Examples
 
-## Steps to create you bot!
+## Steps to create your bot!
 
 The following is based on the [discord.js guide](https://discordjs.guide/#before-you-begin).
 
@@ -8,8 +8,7 @@ The following is based on the [discord.js guide](https://discordjs.guide/#before
 
 ```
 $ npm init
-$ npm install discord.js
-$ npm install dotenv
+$ npm install discord.js dotenv
 ```
 
 2. [Create an application](https://discord.com/developers/applications/) - optionally set name, description, avatar. Note the "Application ID" (aka "Client ID").
@@ -20,7 +19,7 @@ $ npm install dotenv
 
 5. Enable "Developer Mode" under the "Advanced" settings tab on your discord client, right-click the server icon, and "copy ID" for the server ID.
 
-6. Create a `.env` file with your CLIENTID, SERVERID, and BOTTOKEN:
+6. Create a `.env` file with your CLIENTID, SERVERID, and TOKEN:
 
 ```
 CLIENTID=1234

@@ -33,10 +33,10 @@ for (const folder of commandFolders) {
 }
 
 // Construct and prepare an insance of the REST module
-const rest = new REST().setToken(token);
+const rest = new REST().setToken(process.env.CLIENTSECRET);
 
 // and deploy your commands!
-async () => {
+(async () => {
   try {
     console.log(
       `Started refreshing ${commands.length} application (/) commands.`
@@ -49,8 +49,11 @@ async () => {
       ),
       { body: commands }
     );
+    console.log(
+      `Successfully reloaded ${data.length} application (/) commands.`
+    );
   } catch (error) {
     // And of course, make sure you catch and log any errors!
     console.error(error);
   }
-};
+})()
