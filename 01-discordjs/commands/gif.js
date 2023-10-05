@@ -29,7 +29,7 @@ export async function execute(interaction) {
   const embed = new EmbedBuilder().setImage(json.results[index].media_formats.gif.url);
 
   // Initially acknowledging the command interaction with a hidden (ephemeral) reply
-  await interaction.deferReply({ ephemeral: true });
+  await interaction.deferReply({ ephemeral: false });
 
   // Following up with the selected GIF embedded in the message
   await interaction.followUp({

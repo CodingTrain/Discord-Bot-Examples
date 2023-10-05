@@ -1,10 +1,8 @@
 // Import the necessary discord.js classes using ES6 syntax
 import { Client, Events, GatewayIntentBits } from 'discord.js';
 import dotenv from 'dotenv';
-import { readFile, readdir } from 'fs/promises'; // Node.js built-in module for file system actions
-import path from 'path';
-import * as choochoo from './commands/choochoo.mjs'; // Assume the command file also uses ES6 syntax
-import * as gif from './commands/gif.mjs'; // Assume the command file also uses ES6 syntax
+import * as choochoo from './commands/choochoo.js';
+import * as gif from './commands/gif.js';
 
 dotenv.config();
 
