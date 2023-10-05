@@ -1,17 +1,19 @@
 // Slash Commands Deployment Script
 // https://discordjs.guide/creating-your-bot/command-deployment.html#guild-commands/
 
-const { REST, Routes } = require('discord.js');
-require('dotenv').config();
-const fs = require('node:fs');
-const path = require('node:path');
+// Importing modules using ES6 syntax
+import { REST, Routes } from 'discord.js';
+import { config } from 'dotenv';
+import fs from 'node:fs';
+
+config(); // Using dotenv config function directly
 
 const commands = [];
 const commandFiles = fs.readdirSync('./commands').filter((file) => file.endsWith('.js'));
 
 // Grab the SlashCommandBuilder#toJSON() output of each command's data for deployment
 for (const file of commandFiles) {
-  const command = require(`./commands/${file}`);
+  const command = await import(`./commands/${file}`); // Using dynamic import
   if ('data' in command && 'execute' in command) {
     commands.push(command.data.toJSON());
   } else {
