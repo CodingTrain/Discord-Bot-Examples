@@ -27,11 +27,10 @@ $ npm install discord.js dotenv
 
 ### 4. Add Bot to a Server
 
-Use the following URL to add the bot to your Discord server, replacing `YOUR_APPLICATION_ID` with your actual application ID:
-
-```plaintext
-https://discord.com/oauth2/authorize?client_id=YOUR_APPLICATION_ID&scope=bot
-```
+- Go to your application page in the Discord developer portal.
+- Navigate to "OAuth" -> "URL Generator".
+- Check "application.commands" and "bot".
+- Open the URL that populates at the bottom and authorize the bot to access your server.
 
 ### 5. Enable Developer Mode in Discord
 
@@ -50,20 +49,13 @@ TOKEN=1234
 
 These environment variables are used to keep sensitive data, like your bot token, out of your code. This is especially important if you're sharing your code with others or storing your code publicly on GitHub. (Notice how `.env` is included in `.gitignore`.)
 
-### 7. Add Slash Commands Permission
-
-- Go to your application page in the Discord developer portal.
-- Navigate to "OAuth" -> "URL Generator".
-- Check "application.commands".
-- Open the URL that populates at the bottom and authorize the bot to access your server.
-
-### 8. Create the bot code!
+### 7. Create the bot code!
 
 Create `bot.js` (or `index.js`) and paste this code:
 
 ```javascript
-const { Client, Events, GatewayIntentBits } = require('discord.js');
-require('dotenv').config();
+const { Client, Events, GatewayIntentBits } = require("discord.js");
+require("dotenv").config();
 // Create a new client instance
 const client = new Client({
   intents: [GatewayIntentBits.Guilds],
@@ -76,7 +68,7 @@ client.once(Events.ClientReady, readyDiscord);
 client.login(process.env.TOKEN);
 
 function readyDiscord() {
-  console.log('💖');
+  console.log("💖");
 }
 ```
 
@@ -86,22 +78,24 @@ Run to see if it works! (If you see the 💖 it's working!)
 $ node bot.js
 ```
 
-## 9. Create a Command
+## 8. Create a Command
 
 Each command should be handled in a separate JS file, there are many ways you can manage this, but I suggest putting them in a folder called commands:
 
 ```javascript
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder } = require("discord.js");
 
 module.exports = {
-  data: new SlashCommandBuilder().setName('choochoo').setDescription('Says choo choo back!'),
+  data: new SlashCommandBuilder()
+    .setName("choochoo")
+    .setDescription("Says choo choo back!"),
   async execute(interaction) {
-    await interaction.reply('Choo Choo! 🚂');
+    await interaction.reply("Choo Choo! 🚂");
   },
 };
 ```
 
-## 10. Deploy the commands
+## 9. Deploy the commands
 
 Create `deploy-commands.js` and copy the example code. Then run it!
 
@@ -111,16 +105,16 @@ node deploy-commands.js
 
 You only have to do this once. If you change the command (altering descriptions, changing options, etc.), then you do need to re-run `deploy-commands.js`.
 
-## 11. Add the code to handle the command
+## 10. Add the code to handle the command
 
 You also need to handle the command in bot.js, add the equivalent code:
 
 ```javascript
-const choochoo = require('./commands/choochoo');
+const choochoo = require("./commands/choochoo");
 
-client.on('interactionCreate', async (interaction) => {
+client.on("interactionCreate", async (interaction) => {
   if (!interaction.isCommand()) return;
-  if (interaction.commandName === 'choochoo') {
+  if (interaction.commandName === "choochoo") {
     await choochoo.execute(interaction);
   }
 });
