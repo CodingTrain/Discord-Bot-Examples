@@ -57,6 +57,8 @@ Create `bot.js` (or `index.js`) and paste this code:
 import { Client, Events, GatewayIntentBits } from 'discord.js';
 import dotenv from 'dotenv';
 
+dotenv.config();
+
 // Create a new client instance
 const client = new Client({
   intents: [GatewayIntentBits.Guilds],
