@@ -5,10 +5,16 @@ import { SlashCommandBuilder, EmbedBuilder } from 'discord.js';
 export const data = new SlashCommandBuilder()
   .setName('gif')
   .setDescription('Searches Tenor for gifs!')
-  .addStringOption((option) => option.setName('keywords').setDescription('The keywords to search Tenor with'));
+  .addStringOption((option) =>
+    option.setName('keywords').setDescription('The keywords to search Tenor with')
+  );
 
 // Execute function to interact with Tenor API and reply with a GIF
 export async function execute(interaction) {
+  // Initially acknowledging the command interaction
+  // can use { ephemeral: true } for reply to be seen by user only
+  await interaction.deferReply();
+
   // Default keyword set to 'kitten' if none provided
   let defaultKeyword = 'kitten';
   const keywords = interaction.options.getString('keywords') ?? defaultKeyword;
@@ -27,9 +33,6 @@ export async function execute(interaction) {
 
   // Creating an embed to display the GIF in the Discord message
   const embed = new EmbedBuilder().setImage(json.results[index].media_formats.gif.url);
-
-  // Initially acknowledging the command interaction with a hidden (ephemeral) reply
-  await interaction.deferReply({ ephemeral: false });
 
   // Following up with the selected GIF embedded in the message
   await interaction.followUp({
