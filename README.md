@@ -89,7 +89,9 @@ Each command should be handled in a separate JS file, there are many ways you ca
 import { SlashCommandBuilder } from 'discord.js';
 
 // Command Builder export
-export const data = new SlashCommandBuilder().setName('choochoo').setDescription('Replies choo choo!');
+export const data = new SlashCommandBuilder()
+  .setName('choochoo')
+  .setDescription('Replies choo choo!');
 
 // Execute function export
 export async function execute(interaction) {
