@@ -88,14 +88,13 @@ Each command should be handled in a separate JS file, there are many ways you ca
 ```javascript
 import { SlashCommandBuilder } from 'discord.js';
 
-module.exports = {
-  data: new SlashCommandBuilder()
-    .setName('choochoo')
-    .setDescription('Says choo choo back!'),
-  async execute(interaction) {
-    await interaction.reply('Choo Choo! 🚂');
-  },
-};
+// Command Builder export
+export const data = new SlashCommandBuilder().setName('choochoo').setDescription('Replies choo choo!');
+
+// Execute function export
+export async function execute(interaction) {
+  await interaction.reply('Choo choo!');
+}
 ```
 
 ## 9. Deploy the commands
