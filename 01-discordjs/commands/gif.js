@@ -1,11 +1,12 @@
 // Importing modules using ES6 syntax
-import fetch from 'node-fetch';
 import { SlashCommandBuilder, EmbedBuilder } from 'discord.js';
 
 export const data = new SlashCommandBuilder()
   .setName('gif')
   .setDescription('Searches Tenor for gifs!')
-  .addStringOption((option) => option.setName('keywords').setDescription('The keywords to search Tenor with'));
+  .addStringOption((option) =>
+    option.setName('keywords').setDescription('The keywords to search Tenor with')
+  );
 
 // Execute function to interact with Tenor API and reply with a GIF
 export async function execute(interaction) {
