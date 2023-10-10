@@ -54,8 +54,9 @@ These environment variables are used to keep sensitive data, like your bot token
 Create `bot.js` (or `index.js`) and paste this code:
 
 ```javascript
-const { Client, Events, GatewayIntentBits } = require('discord.js');
-require('dotenv').config();
+import { Client, Events, GatewayIntentBits } from 'discord.js';
+import dotenv from 'dotenv';
+
 // Create a new client instance
 const client = new Client({
   intents: [GatewayIntentBits.Guilds],
@@ -83,7 +84,7 @@ $ node bot.js
 Each command should be handled in a separate JS file, there are many ways you can manage this, but I suggest putting them in a folder called commands:
 
 ```javascript
-const { SlashCommandBuilder } = require('discord.js');
+import { SlashCommandBuilder } from 'discord.js';
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -110,7 +111,7 @@ You only have to do this once. If you change the command (altering descriptions,
 You also need to handle the command in bot.js, add the equivalent code:
 
 ```javascript
-const choochoo = require('./commands/choochoo');
+import * as choochoo from './commands/choochoo.js';
 
 client.on('interactionCreate', async (interaction) => {
   if (!interaction.isCommand()) return;
