@@ -17,8 +17,8 @@ client.once(Events.ClientReady, readyDiscord);
 // Login to Discord with your client's token
 client.login(process.env.TOKEN);
 
-function readyDiscord(c) {
-  console.log('💖 Logged in as', c.user.tag);
+function readyDiscord() {
+  console.log('💖 Logged in as', client.user.tag);
 }
 
 client.on('interactionCreate', async (interaction) => {
