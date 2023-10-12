@@ -7,7 +7,9 @@ import * as gif from './commands/gif.js';
 dotenv.config();
 
 // Create a new client instance
-const client = new Client();
+const client = new Client({
+  intents: []
+});
 
 // When the client is ready, run this code (only once)
 client.once(Events.ClientReady, readyDiscord);
