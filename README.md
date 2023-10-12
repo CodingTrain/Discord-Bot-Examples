@@ -12,6 +12,7 @@ Create a new Node.js project and install necessary dependencies.
 $ npm init
 $ npm install discord.js dotenv
 ```
+Add a property `"type": "module"` in your `package.json` file in order to use ES6 module import syntax.
 
 ### 2. Create a Discord Application
 
@@ -60,7 +61,9 @@ import { config } from 'dotenv';
 config();
 
 // Create a new client instance
-const client = new Client();
+const client = new Client({
+  intents: []
+});
 
 // When the client is ready, run this code (only once)
 client.once(Events.ClientReady, readyDiscord);
