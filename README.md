@@ -55,9 +55,9 @@ Create `bot.js` (or `index.js`) and paste this code:
 
 ```javascript
 import { Client, Events, GatewayIntentBits } from 'discord.js';
-import dotenv from 'dotenv';
+import { config } from 'dotenv';
 
-dotenv.config();
+config();
 
 // Create a new client instance
 const client = new Client({
