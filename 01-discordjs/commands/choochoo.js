@@ -5,7 +5,9 @@ import { SlashCommandBuilder } from 'discord.js';
 const replies = ['🚂🌈💖', 'Choo choo!', 'Ding! 🛎', 'Never forget this dot!'];
 
 // Command Builder export
-export const data = new SlashCommandBuilder().setName('choochoo').setDescription('Replies with a random phrase!');
+export const data = new SlashCommandBuilder()
+  .setName('choochoo')
+  .setDescription('Replies with a random phrase!');
 
 // Execute function export
 export async function execute(interaction) {
