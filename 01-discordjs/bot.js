@@ -1,6 +1,7 @@
 // Import the necessary discord.js classes using ES6 syntax
 import { Client, Events, GatewayIntentBits } from 'discord.js';
 import { config } from 'dotenv';
+
 import * as choochoo from './commands/choochoo.js';
 import * as gif from './commands/gif.js';
 import * as randomwalk from './commands/randomwalk.js';
@@ -32,7 +33,7 @@ function readyDiscord() {
 }
 
 // Event listener for when a slash command is executed
-client.on('interactionCreate', async (interaction) => {
+client.on(Events.InteractionCreate, async (interaction) => {
   // Ensure interaction is a command before proceeding
   if (!interaction.isCommand()) return;
 

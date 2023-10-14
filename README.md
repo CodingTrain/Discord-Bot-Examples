@@ -12,6 +12,7 @@ Create a new Node.js project and install necessary dependencies.
 $ npm init
 $ npm install discord.js dotenv
 ```
+Add a property `"type": "module"` in your `package.json` file in order to use ES6 module import syntax.
 
 ### 2. Create a Discord Application
 
@@ -54,14 +55,14 @@ These environment variables are used to keep sensitive data, like your bot token
 Create `bot.js` (or `index.js`) and paste this code:
 
 ```javascript
-import { Client, Events, GatewayIntentBits } from 'discord.js';
+import { Client, Events } from 'discord.js';
 import { config } from 'dotenv';
 
 config();
 
 // Create a new client instance
 const client = new Client({
-  intents: [GatewayIntentBits.Guilds],
+  intents: []
 });
 
 // When the client is ready, run this code (only once)
@@ -116,12 +117,14 @@ You also need to handle the command in bot.js, add the equivalent code:
 ```javascript
 import * as choochoo from './commands/choochoo.js';
 
-client.on('interactionCreate', async (interaction) => {
+client.on(Events.InteractionCreate, handleInteraction);
+
+async function handleInteraction(interaction) {
   if (!interaction.isCommand()) return;
   if (interaction.commandName === 'choochoo') {
     await choochoo.execute(interaction);
   }
-});
+}
 ```
 
 Then run the bot again!
