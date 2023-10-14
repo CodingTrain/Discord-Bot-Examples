@@ -31,7 +31,14 @@ export async function execute(interaction) {
   const index = Math.floor(Math.random() * json.results.length);
 
   // Creating an embed to display the GIF in the Discord message
-  const embed = new EmbedBuilder().setImage(json.results[index].media_formats.gif.url);
+  const embed = new EmbedBuilder()
+    .setColor('#0099ff')
+    .setTitle(`GIF from Tenor: ${keywords}`)
+    .setURL(json.results[index].url)
+    .setImage(json.results[index].media_formats.gif.url)
+    .setFooter({ text: 'Powered by Tenor' })
+    .setAuthor({ name: 'A2Z Bot' })
+    .setThumbnail(json.results[index].media_formats.tinygif.url); // 5. Thumbnail
 
   // Following up with the selected GIF embedded in the message
   await interaction.followUp({
