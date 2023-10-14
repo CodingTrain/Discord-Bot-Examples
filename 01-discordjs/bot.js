@@ -1,10 +1,11 @@
 // Import the necessary discord.js classes using ES6 syntax
-import { Client, Events } from 'discord.js';
-import dotenv from 'dotenv';
+import { Client, Events, GatewayIntentBits } from 'discord.js';
+import { config } from 'dotenv';
+
 import * as choochoo from './commands/choochoo.js';
 import * as gif from './commands/gif.js';
 
-dotenv.config();
+config();
 
 // Create a new client instance
 const client = new Client({
