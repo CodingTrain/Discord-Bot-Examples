@@ -49,7 +49,7 @@ function startTalking() {
   // channel.send('Hello, this is your bot speaking!');
   setInterval(() => {
     channel.send('Hello, this is your bot speaking!');
-  }, 120000);
+  }, 60 * 60 * 1000);
 }
 
 client.on('messageReactionAdd', (reaction, user) => {
