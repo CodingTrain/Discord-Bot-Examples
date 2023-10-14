@@ -61,7 +61,7 @@ function startTalking() {
 }
 
 // Event listener for when a reaction is added to a message
-client.on('messageReactionAdd', (reaction, user) => {
+client.on(Events.MessageReactionAdd, (reaction, user) => {
   // Retrieve the emoji used for the reaction
   let emoji = reaction.emoji.name;
 
@@ -76,7 +76,7 @@ client.on('messageReactionAdd', (reaction, user) => {
 });
 
 // Event listener for handling any received message
-client.on('messageCreate', (message) => {
+client.on(Events.MessageCreate, (message) => {
   // If the message author is not a bot and the bot is mentioned in the message
   if (!message.author.bot && message.mentions.has(client.user)) {
     // Remove the bot mention from the message content
