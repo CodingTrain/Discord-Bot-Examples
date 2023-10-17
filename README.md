@@ -55,14 +55,14 @@ These environment variables are used to keep sensitive data, like your bot token
 Create `bot.js` (or `index.js`) and paste this code:
 
 ```javascript
-import { Client, Events } from 'discord.js';
+import { Client, Events, GatewayIntentBits } from 'discord.js';
 import { config } from 'dotenv';
 
 config();
 
 // Create a new client instance
 const client = new Client({
-  intents: []
+  intents: [GatewayIntentBits.Guilds]
 });
 
 // When the client is ready, run this code (only once)
