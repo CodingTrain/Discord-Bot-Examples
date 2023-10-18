@@ -102,7 +102,7 @@ export async function execute(interaction) {
 
 ## 9. Deploy the commands
 
-Create `deploy-commands.js` and copy the example code. Then run it!
+Create `deploy-commands.js` and copy the [example code](/01-discordjs/deploy-commands.js). Then run it!
 
 ```sh
 node deploy-commands.js
