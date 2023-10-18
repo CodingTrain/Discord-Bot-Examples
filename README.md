@@ -22,7 +22,7 @@ Add a property `"type": "module"` in your `package.json` file in order to use ES
 
 ### 3. Create and Configure Your Bot
 
-- In the Discord Developer Portal, select "Bot" from the left navigation and click "Add Bot".
+- In the Discord Developer Portal, select "Bot" from the left navigation.
 - Set a name and icon for your bot.
 - Note down the "Bot Token" (keep this secret).
 
