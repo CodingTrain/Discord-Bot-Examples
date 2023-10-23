@@ -1,44 +1,34 @@
 # Discord Bot Examples
 
-This repository provides examples and a step-by-step guide on how to create a simple Discord bot using [discord.js](https://discord.js.org/#/).
+This repository provides the source code used throughout the Discord bot tutorial series of [TheCodingTrain](https://www.youtube.com/@TheCodingTrain). Each folder corresponds to the final code showcased in that episode of the tutorial series.
 
-## Steps to Create Your Bot!
+## General steps to follow when setting up your bot
 
-### 1. Set Up Your Project
+### 1. Create a Discord application
 
-Create a new Node.js project and install necessary dependencies.
+-   Navigate to the [Discord Developer Portal](https://discord.com/developers/applications/) and create a new application.
+-   Optionally, set the application name, description, and avatar.
+-   Note down the "Application ID" (also known as "Client ID").
 
-```sh
-$ npm init
-$ npm install discord.js dotenv
-```
-Add a property `"type": "module"` in your `package.json` file in order to use ES6 module import syntax.
+### 2. Create and configure your bot
 
-### 2. Create a Discord Application
+-   In the Discord Developer Portal, select "Bot" from the left navigation.
+-   Set a name and icon for your bot.
+-   Note down the "Bot Token" (keep this secret).
 
-- Navigate to the [Discord Developer Portal](https://discord.com/developers/applications/) and create a new application.
-- Optionally, set the application name, description, and avatar.
-- Note down the "Application ID" (also known as "Client ID").
+### 3. Add bot to a server
 
-### 3. Create and Configure Your Bot
+-   Go to your application page in the Discord developer portal.
+-   Navigate to "OAuth" -> "URL Generator".
+-   Check "application.commands" and "bot".
+-   Open the URL that populates at the bottom and authorize the bot to access your server.
 
-- In the Discord Developer Portal, select "Bot" from the left navigation.
-- Set a name and icon for your bot.
-- Note down the "Bot Token" (keep this secret).
+### 4. Enable developer mode in Discord
 
-### 4. Add Bot to a Server
+-   Enable "Developer Mode" under the "Advanced" settings tab on your Discord client.
+-   Right-click on the server icon, and select "Copy ID" to get the server ID.
 
-- Go to your application page in the Discord developer portal.
-- Navigate to "OAuth" -> "URL Generator".
-- Check "application.commands" and "bot".
-- Open the URL that populates at the bottom and authorize the bot to access your server.
-
-### 5. Enable Developer Mode in Discord
-
-- Enable "Developer Mode" under the "Advanced" settings tab on your Discord client.
-- Right-click on the server icon, and select "Copy ID" to get the server ID.
-
-### 6. Configure Environment Variables
+### 5. Configure environment variables
 
 Create a `.env` file in your project root and add your client ID, server ID, and bot token:
 
@@ -48,99 +38,20 @@ SERVERID=1234
 TOKEN=1234
 ```
 
+> `⚠️` **Note**: Some of the examples here require additional values in the `.env` files to function. You can always find a `.env-example` alongside the files. This contains all the environmental variables that need to be configured!
+
 These environment variables are used to keep sensitive data, like your bot token, out of your code. This is especially important if you're sharing your code with others or storing your code publicly on GitHub. (Notice how `.env` is included in `.gitignore`.)
 
-### 7. Create the bot code!
+### 6. Deploy the code!
 
-Create `bot.js` (or `index.js`) and paste this code:
+Follow the `README.md` files inside if each episode to deploy and run the Discord bot!
 
-```javascript
-import { Client, Events, GatewayIntentBits } from 'discord.js';
-import { config } from 'dotenv';
+## Additional resources
 
-config();
+-   [Discord.js Guide](https://discordjs.guide/)
+-   [Discord.js Documentation](https://discord.js.org/#/docs/main/stable/general/welcome)
+-   [Discord Developer Portal](https://discord.com/developers/applications/)
 
-// Create a new client instance
-const client = new Client({
-  intents: [GatewayIntentBits.Guilds]
-});
+## Get help!
 
-// When the client is ready, run this code (only once)
-client.once(Events.ClientReady, readyDiscord);
-
-// Login to Discord with your client's token
-client.login(process.env.TOKEN);
-
-function readyDiscord() {
-  console.log('💖');
-}
-```
-
-Run to see if it works! (If you see the 💖 it's working!)
-
-```sh
-$ node bot.js
-```
-
-## 8. Create a Command
-
-Each command should be handled in a separate JS file, there are many ways you can manage this, but I suggest putting them in a folder called commands:
-
-```javascript
-import { SlashCommandBuilder } from 'discord.js';
-
-// Command Builder export
-export const data = new SlashCommandBuilder()
-  .setName('choochoo')
-  .setDescription('Replies choo choo!');
-
-// Execute function export
-export async function execute(interaction) {
-  await interaction.reply('Choo choo!');
-}
-```
-
-## 9. Deploy the commands
-
-Create `deploy-commands.js` and copy the [example code](/01-discordjs/deploy-commands.js). Then run it!
-
-```sh
-node deploy-commands.js
-```
-
-You only have to do this once. If you change the command (altering descriptions, changing options, etc.), then you do need to re-run `deploy-commands.js`.
-
-## 10. Add the code to handle the command
-
-You also need to handle the command in bot.js, add the equivalent code:
-
-```javascript
-import * as choochoo from './commands/choochoo.js';
-
-client.on(Events.InteractionCreate, handleInteraction);
-
-async function handleInteraction(interaction) {
-  if (!interaction.isCommand()) return;
-  if (interaction.commandName === 'choochoo') {
-    await choochoo.execute(interaction);
-  }
-}
-```
-
-Then run the bot again!
-
-```sh
-node bot.js
-```
-
-## Recap of the code elements
-
-- `commands/choochoo.js`: Defines a simple slash command.
-- `index.js`: Handles interactions with Discord and executes commands.
-- `deploy-commands.js`: Script to register slash commands with Discord API.
-
-## Additional Resources
-
-- [Discord.js Guide](https://discordjs.guide/)
-- [Discord.js Documentation](https://discord.js.org/#/docs/main/stable/general/welcome)
-- [Discord Developer Portal](https://discord.com/developers/applications/)
+Stuck on an issue that you can't figure out how to fix? Do you want to create a new feature but don't know how to tackle it? The amazing [Coding Train Discord community](https://discord.gg/codingtrain) is always prepared to help you with any issue you're having!
