@@ -2,6 +2,8 @@
 
 This repository provides the source code used throughout the Discord bot tutorial series of [TheCodingTrain](https://www.youtube.com/@TheCodingTrain). Each folder corresponds to the final code showcased in that episode of the tutorial series together with an explanation of what changes and additions were made during that episode.
 
+Each episode builds ontop of the previous one. So if you've got questions on why some things are done the way they are in existing code, have a look at previous episodes!
+
 ## Additional resources
 
 -   [Discord.js Guide](https://discordjs.guide/)
