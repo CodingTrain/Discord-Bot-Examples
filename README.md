@@ -4,6 +4,12 @@ This repository provides the source code used throughout the Discord bot tutoria
 
 Each episode builds ontop of the previous one. So if you've got questions on why some things are done the way they are in existing code, have a look at previous episodes!
 
+## Video Tutorials
+* 🚂 Workflow: Terminal, Shell, Installing Node, VS Code (Coming soon!)
+   * [Workflow Video Outline with resources and documentation](https://github.com/CodingTrain/Discord-Bot-Examples/wiki/Workflow:-Terminal,-Shell,-Node,-VSCode)
+* 🚂 Creating a Node.js project (Coming soon!)
+* 🚂 Coding your first Discord.js bot (Coming soon!)
+
 ## Additional resources
 
 -   [Discord.js Guide](https://discordjs.guide/)
