@@ -18,4 +18,4 @@ Each episode builds ontop of the previous one. So if you've got questions on why
 
 ## Get help!
 
-Stuck on an issue that you can't figure out how to fix? Do you want to create a new feature but don't know how to tackle it? The amazing [Coding Train Discord community](https://discord.gg/codingtrain) is always prepared to help you with any issue or questions you're having!
+Stuck on an issue that you can't figure out how to fix? Do you want to create a new feature but don't know how to tackle it? The amazing [Coding Train Discord community](https://thecodingtrain.com/discord) is always prepared to help you with any issue or questions you're having!
