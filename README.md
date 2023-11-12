@@ -7,11 +7,12 @@ Each episode builds ontop of the previous one. So if you've got questions on why
 ## Video Tutorials
 * 🚂 [Workflow: Terminal, Shell, Installing Node](https://thecodingtrain.com/tracks/discord-bots/discord/2023-workflow)
 * 🚂 [How to Set Up a Node.js project](https://thecodingtrain.com/tracks/discord-bots/discord/setup-node-project)
-* 🚂 Coding your first Discord.js bot (Coming soon!)
+* 🚂 [Coding your first Discord.js bot](https://thecodingtrain.com/tracks/discord-bots/discord/coding-a-bot)
 
 ## Additional resources
 
 -   [Workflow Video Outline with resources and documentation](https://github.com/CodingTrain/Discord-Bot-Examples/wiki/Workflow:-Terminal,-Shell,-Node,-VSCode)
+-   [Node Project Demo](https://github.com/CodingTrain/node-project-demo)
 -   [Discord.js Guide](https://discordjs.guide/)
 -   [Discord.js Documentation](https://discord.js.org/#/docs/main/stable/general/welcome)
 -   [Discord Developer Portal](https://discord.com/developers/applications/)
